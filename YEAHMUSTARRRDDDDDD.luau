@@ -21,6 +21,7 @@ local function stopAnimations()
     for _, track in ipairs(animator:GetPlayingAnimationTracks()) do
         if table.find(animationIds, track.Animation.AnimationId) then
             track:Stop()
+	    warn('Stopped ANIMATION')
         end
     end
 end
