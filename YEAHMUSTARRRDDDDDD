@@ -1,6 +1,7 @@
 loadstring(game:HttpGet('https://raw.githubusercontent.com/zealonsz/m1reset/refs/heads/main/m1resetscript.luau'))();
 
 local UserInputService = game:GetService("UserInputService")
+local RunService = game:GetService('RunService')
 
 local player = game.Players.LocalPlayer
 local character = player.Character or player.CharacterAdded:Wait()
@@ -25,8 +26,10 @@ local function stopAnimations()
 end
 
 -- Detect key press
-UserInputService.InputBegan:Connect(function(input, gameProcessed)
-    if not gameProcessed and input.KeyCode == Enum.KeyCode.T then
-        stopAnimations()
-    end
+RS.Heartbeat:Connect(function(dt)
+	UserInputService.InputBegan:Connect(function(input, gameProcessed)
+		if not gameProcessed and input.KeyCode == Enum.KeyCode.T then
+			stopAnimations()
+		end
+	end)
 end)
